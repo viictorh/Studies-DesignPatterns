@@ -1,4 +1,4 @@
-package br.com.vhb.designpattern;
+package br.com.vhb.designpattern.solid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,7 +101,7 @@ class BetterFilter implements Filter<Product> {
 	}
 }
 
-class OCPDemo {
+public class OpenClosePrincipleAndSpecification {
 	public static void main(String[] args) {
 		Product apple = new Product("Apple", Color.GREEN, Size.SMALL);
 		Product tree = new Product("Tree", Color.GREEN, Size.LARGE);

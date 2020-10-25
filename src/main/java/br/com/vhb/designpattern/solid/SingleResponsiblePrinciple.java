@@ -1,4 +1,4 @@
-package br.com.vhb.designpattern;
+package br.com.vhb.designpattern.solid;
 
 import java.io.File;
 import java.io.PrintStream;
@@ -64,7 +64,7 @@ class Persistence {
 	}
 }
 
-class SRPDemo {
+public class SingleResponsiblePrinciple {
 	public static void main(String[] args) throws Exception {
 		Journal j = new Journal();
 		j.addEntry("I cried today");
