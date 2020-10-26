@@ -46,6 +46,17 @@ Desta forma, ao utilizar abstrações o código diminui o acoplamento e, consequ
 
 ### DesignPatterns
 
+#### Builder
+
+Este é um design pattern criacional, tem como objetivo disponibilizar uma forma de criar objetos e normalmente é utilizado quando há diversas propriedades que devem ser preenchidas. Sendo assim, em vez de mandar todos os parametros em um construtor, opta-se por utilizar um builder para criar o objeto de forma que facilite a criação, evita o envio de parametros na posição errada e melhora a leitura do código.
+
+
+. Fluent-Builder
+	Ocorre quando voce consegue realizar chamadas em sequencia sem a necessidade de utilizar a variavel a cada chamada. Eg:
+	
+	```java
+	new StringBuild().append(" isto ").append(" é ").append(" fluent-builder ");
+
 ## Materiais uteis
 
 - SOLID (Deschamps): https://www.youtube.com/watch?v=6SfrO3D4dHM 
