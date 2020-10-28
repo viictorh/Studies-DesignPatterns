@@ -54,9 +54,9 @@ Este é um design pattern **criacional**, tem como objetivo disponibilizar uma f
 . Fluent-Builder
 	Ocorre quando voce consegue realizar chamadas em sequencia sem a necessidade de utilizar a variavel a cada chamada. Eg:
 	
-	```java
-	new StringBuild().append(" isto ").append(" é ").append(" fluent-builder ");
-	```
+```java
+new StringBuild().append(" isto ").append(" é ").append(" fluent-builder ");
+```
 
 #### Factory
 
@@ -65,11 +65,28 @@ O Factory pode ser utilizado como um "Factory Method", onde o construtor do obje
 
 Existe também a opção **Abstract Factory** onde a criação do objeto é delegada para uma subclasse
 
+#### Prototype
+
+Este design pattern se trata de replicar, ou seja, clonar objetos. Com ele voce pode utilizar de objetos já criados para modificar apenas algumas propriedades. 
+Existem algumas forma de chegar a este resultado:
+- Implementar a interface clonable - **Não indicada**
+- Implementar um construtor que receberá o objeto que irá clonar
+- Utilizar bibliotecas que usam Serialização ou Reflection para clonar, por exemplo, da apache commons: `SerializationUtils.clone()`
+	
+Ao realizar o clone de um objeto, deve-se tomar cuidado se é um clone "swallow" ou "deepClone". A primeira, trata-se de um clone superficial, onde as outras informações do objeto acabam não sendo clonados e uma modificação nessas classes pode acabar afetando todas as instancias. 
+	Já o `DeepClone`, o que normalmente se busca, realiza o clone de toda a arvore deste objeto.
+
+#### Singleton
+
+Este pattern é utilizado para criar uma unica instancia da classe no projeto. Normalmente quando carrega uma informação que não faz sentido ser carregada diversas vezes, ou não haverá modificações após realizado o carregamento, ou, ainda, realizado o carregamento, a informação deva ser centralizada para que qualquer objeto pegue o mesmo valor quando necessitar utiliza-la. 
+
+É importante tomar cuidado ao criar um Singleton com a utilização de carregamento "Lazy" e "Thread Safe". 
+
 ## Materiais uteis
 
 - SOLID (Deschamps): https://www.youtube.com/watch?v=6SfrO3D4dHM 
-- LSP: https://www.youtube.com/watch?v=XbLDhq3fk5o 
-- LSP: https://www.youtube.com/watch?v=Mmy1EUKC_iE
-- DIP: https://www.youtube.com/watch?v=DQA6BIwslwY
-- DIP: https://www.youtube.com/watch?v=clpc72MS0YE
+	- LSP: https://www.youtube.com/watch?v=XbLDhq3fk5o 
+	- LSP: https://www.youtube.com/watch?v=Mmy1EUKC_iE
+	- DIP: https://www.youtube.com/watch?v=DQA6BIwslwY
+	- DIP: https://www.youtube.com/watch?v=clpc72MS0YE
 - Design Patterns: https://www.youtube.com/watch?v=NU_1StN5Tkk
