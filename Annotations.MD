@@ -48,7 +48,7 @@ Desta forma, ao utilizar abstrações o código diminui o acoplamento e, consequ
 
 #### Builder
 
-Este é um design pattern criacional, tem como objetivo disponibilizar uma forma de criar objetos e normalmente é utilizado quando há diversas propriedades que devem ser preenchidas. Sendo assim, em vez de mandar todos os parametros em um construtor, opta-se por utilizar um builder para criar o objeto de forma que facilite a criação, evita o envio de parametros na posição errada e melhora a leitura do código.
+Este é um design pattern **criacional**, tem como objetivo disponibilizar uma forma de criar objetos e normalmente é utilizado quando há diversas propriedades que devem ser preenchidas. Sendo assim, em vez de mandar todos os parametros em um construtor, opta-se por utilizar um builder para criar o objeto de forma que facilite a criação, evita o envio de parametros na posição errada e melhora a leitura do código.
 
 
 . Fluent-Builder
@@ -56,6 +56,14 @@ Este é um design pattern criacional, tem como objetivo disponibilizar uma forma
 	
 	```java
 	new StringBuild().append(" isto ").append(" é ").append(" fluent-builder ");
+	```
+
+#### Factory
+
+Este também é um design pattern **criacional**, nele, busca-se criar objetos mais complexos e facilitar a criação ou ainda definir restrições ao criar um objeto. 
+O Factory pode ser utilizado como um "Factory Method", onde o construtor do objeto é privado e existe um método estatico para realizar a criação, normalmente utilizado quando o construtor não é "expressivo" o suficiente, ou seja, ao utilizar este construtor não dá pra saber exatamente o que ocorrerá. Ou, ainda, pode-se criar uma classe separada responsável apenas pela criação do objeto. Normalmente, ao existir um factory pode acontecer do objeto ter o construtor privado (buscando evitar que alguem o utilize de maneira erronea) e, desta forma, a solução é criar o factory como uma inner static class. 
+
+Existe também a opção **Abstract Factory** onde a criação do objeto é delegada para uma subclasse
 
 ## Materiais uteis
 
@@ -64,3 +72,4 @@ Este é um design pattern criacional, tem como objetivo disponibilizar uma forma
 - LSP: https://www.youtube.com/watch?v=Mmy1EUKC_iE
 - DIP: https://www.youtube.com/watch?v=DQA6BIwslwY
 - DIP: https://www.youtube.com/watch?v=clpc72MS0YE
+- Design Patterns: https://www.youtube.com/watch?v=NU_1StN5Tkk
