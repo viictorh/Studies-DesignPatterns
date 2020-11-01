@@ -82,6 +82,50 @@ Este pattern é utilizado para criar uma unica instancia da classe no projeto. N
 
 É importante tomar cuidado ao criar um Singleton com a utilização de carregamento "Lazy" e "Thread Safe". 
 
+##### Problemas com `Basic Singleton`
+
+Dependendo de como o Singleton é implementado, existem algumas formas de "quebrar" este pattern, uma dela é atraves do uso de **reflection** outra por **serialization**. Nestes casos, por mais que a classe singleton não possa ser instanciado novamente, utilizando as formas mencionadas, será criada uma nova instancia da classe. Isso pode acontecer propositalmente, ou por acidente. 
+
+No caso da serialização, pode-se implementar o metodo "readResolve" e obrigar o retorno da instancia estática que já existe, porém é mais um controle que o programador deve estar ciente de realizar.
+
+##### Laziness e Threadsafe
+
+A criação de um singleton utilizando o conceito "lazy", é quando voce apenas cria a instancia quando realmente irá utilizar o singleton. Desta forma, ao utilizar o `getInstance()`, é validado se já existe uma instancia e caso não tenha, o singleton é criado. 
+
+```java
+private static LazySingleton instance;
+
+public LazySingleton getInstance(){
+	if(instance == null){
+		instance = new LazySingleton();
+	}
+	return instance;
+}
+
+O problema do código acima ocorre quando há diversas threads utilizando o mesmo singleton. Isso pode gerar uma concorrencia no método e criar mais de uma instance do que deveria ser um singleton. Uma forma de corrigir este problema é utilizar o chamado **double-checked locking".
+
+```
+
+Outra forma de evitar o problema de thread-safe com a inicialização lazy é utilizando InnerClass. No java, uma classe só é inicializada quando é utilizada. Sendo assim, a instancia só será criada quando realmente for chamada e sem a necessidade de sincronização de blocos como no double-checked.
+
+Exemplo: `InnerClassSingleton.java`
+
+##### Singleton utilizando enum
+
+Outra forma de se criar um singleton é utilizando enum. Neste caso, não há problemas com lazyness ou thread-safe, porém, caso utilize Serialização os valores dos campos da enum pode ser perdidos. Isso acontece, pois as Enums são serializaveis, mas apenas o nome. Suas propriedades são consideradas "transient". Caso a aplicação não tenha sido finalizada, ao ler o arquivo novamente, os valores da enum estarão corretos, entretando, após a finalização do processo, reinicialização e releitura do arquivo, o valor da enum voltará para o valor inicial do construtor. 
+
+De modo geral, a utilização de enum como singleton tem a proteção no caso de lazyness e thread-safe, mas caso seja necessário serializar e deserializar os valores da enum serão perdidos.
+
+https://stackoverflow.com/questions/15521309/is-custom-enum-serializable-too/15522276#15522276
+
+##### Monostate
+
+É possivel criar diversas instancias da classe, porém todas as propriedades são estáticas. Não é _aconselhavel utilizar desta forma_, mas pode acontecer quando já existem diversos locais na aplicação criando novas instancias e posterioremente muda-se para uma forma de singleton, onde todos veem e modificam os mesmos valores. 
+
+##### Multiton
+
+Não é basicamente um singleton, mas permite a criação definida de um objeto baseado em chave <=> valor. Após criada a instancia para determinada chave, não se cria novamente, retorna a instancia previamente criada.  
+
 ## Materiais uteis
 
 - SOLID (Deschamps): https://www.youtube.com/watch?v=6SfrO3D4dHM 
