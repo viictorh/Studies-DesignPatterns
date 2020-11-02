@@ -96,15 +96,15 @@ A criação de um singleton utilizando o conceito "lazy", é quando voce apenas 
 private static LazySingleton instance;
 
 public LazySingleton getInstance(){
-	if(instance == null){
-		instance = new LazySingleton();
-	}
-	return instance;
+if(instance == null){
+instance = new LazySingleton();
 }
+return instance;
+}
+```
 
 O problema do código acima ocorre quando há diversas threads utilizando o mesmo singleton. Isso pode gerar uma concorrencia no método e criar mais de uma instance do que deveria ser um singleton. Uma forma de corrigir este problema é utilizar o chamado **double-checked locking".
 
-```
 
 Outra forma de evitar o problema de thread-safe com a inicialização lazy é utilizando InnerClass. No java, uma classe só é inicializada quando é utilizada. Sendo assim, a instancia só será criada quando realmente for chamada e sem a necessidade de sincronização de blocos como no double-checked.
 
@@ -125,6 +125,11 @@ https://stackoverflow.com/questions/15521309/is-custom-enum-serializable-too/155
 ##### Multiton
 
 Não é basicamente um singleton, mas permite a criação definida de um objeto baseado em chave <=> valor. Após criada a instancia para determinada chave, não se cria novamente, retorna a instancia previamente criada.  
+
+##### Testability
+
+Um dos problemas com a utilização do Design Pattern Singleton é a realização de testes unitários. Uma vez que a utilização é realizada diretamente na classe, sem a criação da instancia pela classe dependente, ao realizar o teste desta segunda classe, acaba-se testando o singleton também, quando não era a intenção, o que não é mais um teste unitário, e sim integrado. 
+Uma forma de corrigir este problema é a utilização de **Injeção de Dependencia** e abstração. Em vez de se utilizar a classe concreta, utiliza-se a abstrata e o valor é injetado. Desta forma, pode-se utilizar tanto um singleton que carrega de um arquivo, de um banco de dados, fixo no texto (para teste), enfim. 
 
 ## Materiais uteis
 
