@@ -88,7 +88,7 @@ Dependendo de como o Singleton é implementado, existem algumas formas de "quebr
 
 No caso da serialização, pode-se implementar o metodo "readResolve" e obrigar o retorno da instancia estática que já existe, porém é mais um controle que o programador deve estar ciente de realizar.
 
-##### Laziness e Threadsafe
+##### 1) Laziness e Threadsafe
 
 A criação de um singleton utilizando o conceito "lazy", é quando voce apenas cria a instancia quando realmente irá utilizar o singleton. Desta forma, ao utilizar o `getInstance()`, é validado se já existe uma instancia e caso não tenha, o singleton é criado. 
 
@@ -110,7 +110,7 @@ Outra forma de evitar o problema de thread-safe com a inicialização lazy é ut
 
 Exemplo: `InnerClassSingleton.java`
 
-##### Singleton utilizando enum
+##### 2) Singleton utilizando enum
 
 Outra forma de se criar um singleton é utilizando enum. Neste caso, não há problemas com lazyness ou thread-safe, porém, caso utilize Serialização os valores dos campos da enum pode ser perdidos. Isso acontece, pois as Enums são serializaveis, mas apenas o nome. Suas propriedades são consideradas "transient". Caso a aplicação não tenha sido finalizada, ao ler o arquivo novamente, os valores da enum estarão corretos, entretando, após a finalização do processo, reinicialização e releitura do arquivo, o valor da enum voltará para o valor inicial do construtor. 
 
@@ -118,18 +118,40 @@ De modo geral, a utilização de enum como singleton tem a proteção no caso de
 
 https://stackoverflow.com/questions/15521309/is-custom-enum-serializable-too/15522276#15522276
 
-##### Monostate
+##### 3) Monostate
 
 É possivel criar diversas instancias da classe, porém todas as propriedades são estáticas. Não é _aconselhavel utilizar desta forma_, mas pode acontecer quando já existem diversos locais na aplicação criando novas instancias e posterioremente muda-se para uma forma de singleton, onde todos veem e modificam os mesmos valores. 
 
-##### Multiton
+##### 4) Multiton
 
 Não é basicamente um singleton, mas permite a criação definida de um objeto baseado em chave <=> valor. Após criada a instancia para determinada chave, não se cria novamente, retorna a instancia previamente criada.  
 
-##### Testability
+##### 5) Testability
 
 Um dos problemas com a utilização do Design Pattern Singleton é a realização de testes unitários. Uma vez que a utilização é realizada diretamente na classe, sem a criação da instancia pela classe dependente, ao realizar o teste desta segunda classe, acaba-se testando o singleton também, quando não era a intenção, o que não é mais um teste unitário, e sim integrado. 
 Uma forma de corrigir este problema é a utilização de **Injeção de Dependencia** e abstração. Em vez de se utilizar a classe concreta, utiliza-se a abstrata e o valor é injetado. Desta forma, pode-se utilizar tanto um singleton que carrega de um arquivo, de um banco de dados, fixo no texto (para teste), enfim. 
+
+##### Adapter
+
+Como o próprio nome sugere, este design pattern permite adaptar uma classe/interface a outra. Desta forma, uma implementação pre-existente pode ser reaproveitada. 
+Com o adapter voce abstrai todas as complexidades de conversão de um objeto para outro e permite, por exemplo, que novas bibliotecas se comuniquem com antigas sem modificar o código, apenas realizando as adaptações para que elas passem a se comunicar.
+
+##### Bridge
+
+Este padrão de projeto visa facilitar a implementação de classes abstratas e interfaces evitando o crescimento exponencial de classes. Por exemplo: Supondo que exista uma classe `Forma` e 2 subclasses `Circulo`e `Quadrado`. Voce quer estender essa hierarquia de forma a existirem cores, então são criadas as subclasses `Vermelho` e `Azul`. Porém, como já existem 2 subclasses `Circulo`e `Quadrado`, agora seriam necessárias 4 classes como: `CirculoAzul`, `CirculoVermelho`, etc.
+Adicionando novos tipos ou cores faria essa hierarquia crescer exponencialmente, por exemplo, adicionar um `Triangulo`, precisaria de 2 classes novas e, depois, mais uma cor, seriam mais 3 classes, e assim por diante. 
+
+Este problema ocorre, pois estamos tentando estender a forma em 2 dimensões independentes: Cor e Forma. 
+
+Com este padrão, tenta-se resolver esse problema modificando de `Herança`para composição. Agora, em vez de herdar as cores, a forma *possui* uma cor. Então, todo o código relacionado a cor é removido da classe `Circulo`, por exemplo, e colocado em uma classe própria da cor (Ex: `Azul`) e sua utilização é delegada para esta outra classe. 
+
+**Antes** 
+
+![Bridge Before](/doc-images/bridge_before.png?s=315)
+
+**Depois**
+
+![Bridge After](/doc-images/bridge_after.png?s=200)
 
 ## Materiais uteis
 
@@ -138,4 +160,10 @@ Uma forma de corrigir este problema é a utilização de **Injeção de Dependen
 	- LSP: https://www.youtube.com/watch?v=Mmy1EUKC_iE
 	- DIP: https://www.youtube.com/watch?v=DQA6BIwslwY
 	- DIP: https://www.youtube.com/watch?v=clpc72MS0YE
-- Design Patterns: https://www.youtube.com/watch?v=NU_1StN5Tkk
+- Design Patterns: 
+	- https://www.youtube.com/watch?v=NU_1StN5Tkk
+	- https://www.youtube.com/playlist?list=PLbIBj8vQhvm0VY5YrMrafWaQY2EnJ3j8H
+	- Adapter: https://www.youtube.com/watch?reload=9&v=qG286LQM6BU
+	- Bridge: https://www.youtube.com/watch?v=9jIgSsIfh_8
+	- Bridge: https://www.youtube.com/watch?v=-gsuMWLxAko
+	- Bridge: https://refactoring.guru/design-patterns/bridge
