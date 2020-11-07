@@ -46,6 +46,15 @@ Desta forma, ao utilizar abstrações o código diminui o acoplamento e, consequ
 
 ### DesignPatterns
 
+**Design Pattern estruturais**
+
+São Padrões de projetos que se preocupam com a forma que os objetos são compostos para formar estruturas maiores: Adapter, Bridge, Composite, Decorator, Façade, Flyweigth e Proxy.
+
+**Design Pattern criacionais**
+
+São padrões de projetos que se preocupam com a forma que os objetos são criados, visando facilitar a criação, manutenção e garantir a correta criaçaõ do objeto:
+Builder, Factory, Prototype e Singleton.  
+
 #### Builder
 
 Este é um design pattern **criacional**, tem como objetivo disponibilizar uma forma de criar objetos e normalmente é utilizado quando há diversas propriedades que devem ser preenchidas. Sendo assim, em vez de mandar todos os parametros em um construtor, opta-se por utilizar um builder para criar o objeto de forma que facilite a criação, evita o envio de parametros na posição errada e melhora a leitura do código.
@@ -133,10 +142,14 @@ Uma forma de corrigir este problema é a utilização de **Injeção de Dependen
 
 ##### Adapter
 
+_Categoria: Estrutural_
+
 Como o próprio nome sugere, este design pattern permite adaptar uma classe/interface a outra. Desta forma, uma implementação pre-existente pode ser reaproveitada. 
 Com o adapter voce abstrai todas as complexidades de conversão de um objeto para outro e permite, por exemplo, que novas bibliotecas se comuniquem com antigas sem modificar o código, apenas realizando as adaptações para que elas passem a se comunicar.
 
 ##### Bridge
+
+_Categoria: Estrutural_
 
 Este padrão de projeto visa facilitar a implementação de classes abstratas e interfaces evitando o crescimento exponencial de classes. Por exemplo: Supondo que exista uma classe `Forma` e 2 subclasses `Circulo`e `Quadrado`. Voce quer estender essa hierarquia de forma a existirem cores, então são criadas as subclasses `Vermelho` e `Azul`. Porém, como já existem 2 subclasses `Circulo`e `Quadrado`, agora seriam necessárias 4 classes como: `CirculoAzul`, `CirculoVermelho`, etc.
 Adicionando novos tipos ou cores faria essa hierarquia crescer exponencialmente, por exemplo, adicionar um `Triangulo`, precisaria de 2 classes novas e, depois, mais uma cor, seriam mais 3 classes, e assim por diante. 
@@ -147,11 +160,23 @@ Com este padrão, tenta-se resolver esse problema modificando de `Herança`para 
 
 **Antes** 
 
-![Bridge Before](/doc-images/bridge_before.png?s=315)
+![Bridge Before](/doc-images/bridge_before.png)
 
 **Depois**
 
-![Bridge After](/doc-images/bridge_after.png?s=200)
+![Bridge After](/doc-images/bridge_after.png)
+
+##### Composite
+ 
+_Categoria: Estrutural_
+
+Este padrão é um padrão estrutural que facilita na criação, principalmente, de árvores e hierarquias. Com ele, voce monta a estrutura das classes de forma a facilitar realizar a manutenção, navegar entre as classes, utilizar suas funções, etc. 
+Permite tratar tanto objetos individuais quanto grupos de objetos de maneira mais simples
+
+![Composite](/doc-images/composite.png)
+
+##### .
+
 
 ## Materiais uteis
 
@@ -167,3 +192,5 @@ Com este padrão, tenta-se resolver esse problema modificando de `Herança`para 
 	- Bridge: https://www.youtube.com/watch?v=9jIgSsIfh_8
 	- Bridge: https://www.youtube.com/watch?v=-gsuMWLxAko
 	- Bridge: https://refactoring.guru/design-patterns/bridge
+	- Composite: https://www.youtube.com/watch?v=2HUnoKyC9l0
+	- Composite: https://www.youtube.com/watch?v=f4jLEVxP1_U
