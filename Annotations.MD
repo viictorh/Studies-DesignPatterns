@@ -175,8 +175,24 @@ Permite tratar tanto objetos individuais quanto grupos de objetos de maneira mai
 
 ![Composite](/doc-images/composite.png)
 
-##### .
+##### Decorator
 
+_Categoria: Estrutural_
+
+Este design pattern permite adicionar novas funcionalidades a uma classe já existente atraves de agregação. Desta forma, evita-se quebrar o principio OCP e é utilizado também muitas vezes quando a classe é final, e não se pode utilizar herança.
+
+##### Façade
+
+_Categoria: Estrutural_
+
+Este design pattern se assemelha com o pattern **factory**, entretanto, enquanto o factory cria um objeto, este procura criar toda uma estrutura para facilitar a utilização de apenas uma API, seja por operações ou criação de objetos, por exemplo:
+Para escrever em um console, deve-se criar um buffer, adicionar a viewport, definir o tamanho da viewport, definir qual o tamanho do buffer, etc, porém, para o usuário final, ele apenas quer escrever no console. Todas as outras informações não são relevantes para ele e este design pattern busca abstrair toda essa construção e utilização disponibilizando métodos simples para consumo. 
+
+Em resumo, este padrão busca disponibilizar uma API simplificada a respeito da utilização de diversas classes
+
+##### Flyweight
+
+Este design pattern busca uma optimização de espaço, desta forma, evita-se redundancia, por exemplo, de Strings, imagens, etc. Assim, pode-se quebrar as strings em pedaços e utilizar uma forma de "apontar", talvez por indices, para esses itens repetidos, em vez de alocar espaço para cada um deles. Ou seja, esta tecnica busca utilizar menos memoria armazenando dados repetidos "externamente" e agrupando objetos similares.
 
 ## Materiais uteis
 
