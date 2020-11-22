@@ -140,14 +140,14 @@ Não é basicamente um singleton, mas permite a criação definida de um objeto 
 Um dos problemas com a utilização do Design Pattern Singleton é a realização de testes unitários. Uma vez que a utilização é realizada diretamente na classe, sem a criação da instancia pela classe dependente, ao realizar o teste desta segunda classe, acaba-se testando o singleton também, quando não era a intenção, o que não é mais um teste unitário, e sim integrado. 
 Uma forma de corrigir este problema é a utilização de **Injeção de Dependencia** e abstração. Em vez de se utilizar a classe concreta, utiliza-se a abstrata e o valor é injetado. Desta forma, pode-se utilizar tanto um singleton que carrega de um arquivo, de um banco de dados, fixo no texto (para teste), enfim. 
 
-##### Adapter
+#### Adapter
 
 _Categoria: Estrutural_
 
 Como o próprio nome sugere, este design pattern permite adaptar uma classe/interface a outra. Desta forma, uma implementação pre-existente pode ser reaproveitada. 
 Com o adapter voce abstrai todas as complexidades de conversão de um objeto para outro e permite, por exemplo, que novas bibliotecas se comuniquem com antigas sem modificar o código, apenas realizando as adaptações para que elas passem a se comunicar.
 
-##### Bridge
+#### Bridge
 
 _Categoria: Estrutural_
 
@@ -166,7 +166,7 @@ Com este padrão, tenta-se resolver esse problema modificando de `Herança`para 
 
 ![Bridge After](/doc-images/bridge_after.png)
 
-##### Composite
+#### Composite
  
 _Categoria: Estrutural_
 
@@ -175,13 +175,13 @@ Permite tratar tanto objetos individuais quanto grupos de objetos de maneira mai
 
 ![Composite](/doc-images/composite.png)
 
-##### Decorator
+#### Decorator
 
 _Categoria: Estrutural_
 
 Este design pattern permite adicionar novas funcionalidades a uma classe já existente atraves de agregação. Desta forma, evita-se quebrar o principio OCP e é utilizado também muitas vezes quando a classe é final, e não se pode utilizar herança.
 
-##### Façade
+#### Façade
 
 _Categoria: Estrutural_
 
@@ -190,9 +190,53 @@ Para escrever em um console, deve-se criar um buffer, adicionar a viewport, defi
 
 Em resumo, este padrão busca disponibilizar uma API simplificada a respeito da utilização de diversas classes
 
-##### Flyweight
+#### Flyweight
 
 Este design pattern busca uma optimização de espaço, desta forma, evita-se redundancia, por exemplo, de Strings, imagens, etc. Assim, pode-se quebrar as strings em pedaços e utilizar uma forma de "apontar", talvez por indices, para esses itens repetidos, em vez de alocar espaço para cada um deles. Ou seja, esta tecnica busca utilizar menos memoria armazenando dados repetidos "externamente" e agrupando objetos similares.
+
+#### Proxy
+
+Este design pattern funciona como um "proxy" comum que já conhecemos na computação. É como se o objeto destino fosse "interceptado" ou passasse por um outro objeto antes de chegar ao destino final. Podemos utilizar este proxy como validações que devem ser feitas antes ou acrescentar funções no método que se está chamando, como por exemplo "logging", "caching", etc... O proxy normalmente tem a mesma API do objeto destino.
+
+##### Decorator vs Proxy
+A diferença entre estes dois padrões é que o decorator adiciona novas funcionalidades (métodos) a um objeto/api, enquanto o proxy mantém a mesma API, porém modifica ou adiciona funcionalidades na própria chamada da API ou mascara o que realmente está acontecendo, as vezes nem utilizando um objeto real.
+
+Ex: 
+**Decorator**
+
+```java
+
+Person {
+  public void getName(){//code}
+}
+
+PersonDecorator {
+  public void getName(){ person.getName();}
+	
+  //adicionando funcionalidade
+  public void getJob(){//code}
+}
+``` 
+
+**Proxy**
+```java
+Person {
+  public String getName(){//code}
+}
+
+PersonProxy {
+public String getName(){
+  //realizando novas funções
+  log(person);
+  if(person.isAnonymous(){
+    return "hidden";
+  }
+  return person.getName();
+}
+
+
+``` 
+ 
 
 ## Materiais uteis
 
