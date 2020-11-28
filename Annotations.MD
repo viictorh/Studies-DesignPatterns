@@ -207,7 +207,7 @@ Ex:
 ```java
 
 Person {
-  public void getName(){//code}
+  public void getName(){/*code*/}
 }
 
 PersonDecorator {
@@ -221,7 +221,7 @@ PersonDecorator {
 **Proxy**
 ```java
 Person {
-  public String getName(){//code}
+  public String getName(){/*code*/}
 }
 
 PersonProxy {
@@ -236,7 +236,12 @@ public String getName(){
 
 
 ``` 
- 
+
+#### Chain of responsability
+
+_Categoria: Comportamental_
+
+Permite encadear chamadas para que varios objetos possam tratar a requisições (no caso, a requisição pode ser qualquer coisa, desde uma chamada http, ou simplesmente a utilização de um objeto). Assim, existe um evento em cadeia onde cada parte tem sua responsabilidade no tratamento da requisição. 
 
 ## Materiais uteis
 

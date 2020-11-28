@@ -34,7 +34,7 @@ class Property<T> {
 	}
 }
 
-class Creature {
+class CreatureProf {
 	private Property<Integer> agility = new Property<>(10);
 
 	public void setAgility(Integer value) {
@@ -49,7 +49,7 @@ class Creature {
 
 public class PropertyProxy {
 	public static void main(String[] args) {
-		Creature c = new Creature();
+		CreatureProf c = new CreatureProf();
 		c.setAgility(12);
 	}
 }
