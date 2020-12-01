@@ -241,7 +241,20 @@ public String getName(){
 
 _Categoria: Comportamental_
 
-Permite encadear chamadas para que varios objetos possam tratar a requisições (no caso, a requisição pode ser qualquer coisa, desde uma chamada http, ou simplesmente a utilização de um objeto). Assim, existe um evento em cadeia onde cada parte tem sua responsabilidade no tratamento da requisição. 
+Permite encadear chamadas para que varios objetos possam tratar as requisições (no caso, a requisição pode ser qualquer coisa, desde uma chamada http, ou simplesmente a utilização de um objeto). Assim, existe um evento em cadeia onde cada parte tem sua responsabilidade no tratamento da requisição. 
+
+#### Command
+
+_Categoria: Comportamental_
+
+Este design pattern visa desacoplar a aplicação criando um objeto para tratar cada pedido enviado, encapsulando todos os detalhes da operação que será realizada nesse novo objeto. Este tipo padrão também facilita a criação de filas ou execuções de comando em sequencia, agendar, fazer e desfazer operações, etc. 
+
+#### Interpreter
+
+_Categoria: Comportamental_
+
+Este design pattern visa "traduzir" expressões especificas para uma linguagem de programação, ou, no caso do Java, para uma estrutura de Orientação de Objetos.
+
 
 ## Materiais uteis
 
@@ -253,9 +266,11 @@ Permite encadear chamadas para que varios objetos possam tratar a requisições 
 - Design Patterns: 
 	- https://www.youtube.com/watch?v=NU_1StN5Tkk
 	- https://www.youtube.com/playlist?list=PLbIBj8vQhvm0VY5YrMrafWaQY2EnJ3j8H
+	- https://sourcemaking.com/design_patterns/command
+	- https://refactoring.guru/pt-br/design-patterns/
 	- Adapter: https://www.youtube.com/watch?reload=9&v=qG286LQM6BU
 	- Bridge: https://www.youtube.com/watch?v=9jIgSsIfh_8
-	- Bridge: https://www.youtube.com/watch?v=-gsuMWLxAko
-	- Bridge: https://refactoring.guru/design-patterns/bridge
+	- Bridge: https://www.youtube.com/watch?v=-gsuMWLxAko	
 	- Composite: https://www.youtube.com/watch?v=2HUnoKyC9l0
 	- Composite: https://www.youtube.com/watch?v=f4jLEVxP1_U
+	- Interpreter: https://www.baeldung.com/java-interpreter-pattern
