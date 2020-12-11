@@ -255,6 +255,28 @@ _Categoria: Comportamental_
 
 Este design pattern visa "traduzir" expressões especificas para uma linguagem de programação, ou, no caso do Java, para uma estrutura de Orientação de Objetos.
 
+#### Iterator
+
+_Categoria: Comportamental_
+
+Este design pattern refere-se a estrutura de dados, pilha, fila, grafos, arvores, etc. Com este padrão, é possivel iterar os dados de uma estrutura desacoplando a implementação da iteração do objeto em si, delegando a iteração para outros objetos.
+
+#### Mediator
+
+_Categoria: Comportamental_
+
+Este padrão de projeto busca implementar um "mediador" entre os objetos. Normalmente é utilizado em "chat rooms", "Players MMORPG", etc, quando um "componente" pode entrar e sair do sistema. Desta forma, o mediador é o responsável por enviar mensagens, por exemplo e controlar os fluxos de acordo. No exemplo do chat, cada pessoa não precisa ter uma referencia a outra pessoa, mas apenas a sala na qual ela está, e, ao enviar a mensagem, o mediador será responsável por entregar a mensagem para os destinatarios de acordo.
+
+Em resumo, este pattern facilita a comunicação entre componentes sem a necessidade que esses componentes estejam cientes um do outro, o mediador realiza a comunicação entre eles.
+
+
+_Diferença entre Mediator e Observe: https://stackoverflow.com/questions/9226479/mediator-vs-observer-object-oriented-design-patterns_
+
+#### Memento
+
+_Categoria: Comportamental_
+
+De maneira geral, funciona como criação de backups de objetos. Sem violar os encapsulamentos do objeto, ao realizar alguma modificação numa determinada classe, são criados mementos que permitirão realizar o restore do objeto caso necessário.
 
 ## Materiais uteis
 

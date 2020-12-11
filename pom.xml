@@ -17,7 +17,14 @@ This project is based on a course of Udemy "design patterns java" from Dmitri Ne
 	</properties>
 
 
+
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxjava -->
+		<dependency>
+			<groupId>io.reactivex.rxjava3</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>3.0.8</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
