@@ -278,6 +278,25 @@ _Categoria: Comportamental_
 
 De maneira geral, funciona como criação de backups de objetos. Sem violar os encapsulamentos do objeto, ao realizar alguma modificação numa determinada classe, são criados mementos que permitirão realizar o restore do objeto caso necessário.
 
+#### Null Object
+
+_Categoria: Comportamental_
+
+Este design pattern por mais que seja do tipo comportamental, ele não possui nenhum comportamento. A ideia deste padrão é evitar que exceções ocorram, sendo assim, ao existir uma relação de dependencia entre objetos, caso seja necessário que a dependencia não tenha comportamentos, em vez de se enviar "null", utiliza-se este padrão, onde é enviado um objeto, porém ele não possui comportamento algum, apenas evita que problemas ocorram com o código.
+
+#### Observe
+
+_Categoria: Comportamental_
+
+Observe indica que um objeto deseja ser notificado quando determinado campo, ou evento ocorra no sistema. Assim, as entidades que geram esses eventos são chamadas de "observables" e suas ações notificarão quem as observa.  
+
+#### State
+
+_Categoria: Comportamental_
+
+Este padrão de projeto visa desacoplar os estados da aplicação do seu contexto. Com isto, evita-se a criação de diversas condições de acordo com o estado do Objeto e delega o funcionamento do contexto para o objeto de acordo com seu estado e permissoes que aquele estado possui. 
+Por exemplo, imagine que há um pedido de ecommerce e que para enviar o pedido para o cliente, o estado do pedido deva ser "Pago", ao solicitar que se envie o pedido deve-se verificar qual o estado atual do pedido e se aquele estado permite ou nao o envio. Com este padrão o próprio estado é responsável por validar o que ele pode ou não fazer. 
+
 ## Materiais uteis
 
 - SOLID (Deschamps): https://www.youtube.com/watch?v=6SfrO3D4dHM 
