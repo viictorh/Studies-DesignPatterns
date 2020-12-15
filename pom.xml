@@ -16,8 +16,6 @@ This project is based on a course of Udemy "design patterns java" from Dmitri Ne
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
-
-
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxjava -->
 		<dependency>

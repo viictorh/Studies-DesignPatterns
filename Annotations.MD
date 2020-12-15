@@ -297,6 +297,25 @@ _Categoria: Comportamental_
 Este padrão de projeto visa desacoplar os estados da aplicação do seu contexto. Com isto, evita-se a criação de diversas condições de acordo com o estado do Objeto e delega o funcionamento do contexto para o objeto de acordo com seu estado e permissoes que aquele estado possui. 
 Por exemplo, imagine que há um pedido de ecommerce e que para enviar o pedido para o cliente, o estado do pedido deva ser "Pago", ao solicitar que se envie o pedido deve-se verificar qual o estado atual do pedido e se aquele estado permite ou nao o envio. Com este padrão o próprio estado é responsável por validar o que ele pode ou não fazer. 
 
+
+#### Strategy
+
+_Categoria: Comportamental_
+
+Possibilita a implementação de estratégias separadamente do contexto. Com este padrão, busca-se separar os algoritmos responsáveis por determinadas ações e sua utilização ocorre normalmente quando existem variações de algoritmos aplicados a determinadas ações e podem ser alterados em tempo de execução. Por exemplo: Imagine que voce esteja criando formas de renderizar determinado conteudo. De acordo com a seleção do usuário, voce renderiza esse conteudo em HTML ou MARKDOWN. Voce pode optar por criar estratégias para separar o algoritmo de criação dessa renderização para cada tipo.
+
+#### Template Method
+
+_Categoria: Comportamental_
+
+De maneira similar ao Design **Strategy**, este design pattern busca modificar implementações de algoritmos, porém, nele, voce modifica apenas partes da implementação. Sendo assim, enquanto no Strategy trabalha-se com interfaces e cada estratégia implementa um algoritmo completo de acordo com aquela estratégia, no Template existe uma "base" já realizada, normalmente usando herança, a subclasse implementa as partes restantes para completar o algoritmo desejado. 
+
+#### Visitor
+
+_Categoria: Comportamental_
+
+Este design pattern visa facilitar a utilização de um algoritmo quando se tem um estrutura complexa e deseja-se separar uma lógica complexa. Com ele, é possivel visitar os elementos da estrutura e realizar determinada operação de maneira mais simples. Além disso, buscando cumprir o principio de OCP, ele permite que sejam aplicados novos algoritmos ou modificações sem mudanças na estrutura já montada. Normalmente, utiliza-se a forma **Double Dispatch** deste pattern.
+
 ## Materiais uteis
 
 - SOLID (Deschamps): https://www.youtube.com/watch?v=6SfrO3D4dHM 
